@@ -33,6 +33,7 @@
 ## 🏗 Архитектура
 
 ```mermaid
+%%{init: {'flowchart': {'htmlLabels': false}, 'themeVariables': {'fontSize': '13px'}}}%%
 flowchart LR
     subgraph Client["Клиент"]
         U["Пользователь · Swagger UI"]
