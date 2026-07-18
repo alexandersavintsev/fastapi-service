@@ -30,6 +30,36 @@
 
 ---
 
+## 🏗 Архитектура
+
+```mermaid
+flowchart LR
+    subgraph Client["Клиент"]
+        U["Пользователь · Swagger UI"]
+    end
+    subgraph App["FastAPI · app.py"]
+        E1["/user/{id}"]
+        E2["/post/{id}"]
+        E3["feed: user / post"]
+        E4["/post/recommendations/<br/>топ-N по лайкам"]
+    end
+    subgraph Core["Логика и модели"]
+        H["helpers.py<br/>get_user · get_post<br/>get_feed · get_recommended_feed"]
+        MS["models.py · schema.py<br/>dataclasses + Pydantic"]
+    end
+    subgraph DB["PostgreSQL"]
+        T1[("user")]
+        T2[("post")]
+        T3[("feed_action")]
+    end
+    U --> E1 & E2 & E3 & E4
+    E1 & E2 & E3 & E4 --> H
+    H --> MS
+    H --> T1 & T2 & T3
+```
+
+---
+
 ## 🔌 Эндпоинты
 
 | Метод | Путь | Описание |
@@ -46,8 +76,8 @@
 
 ```bash
 # 1. Клонировать и перейти в папку
-git clone https://github.com/alexandersavintsev/recsys-baseline-service.git
-cd recsys-baseline-service
+git clone https://github.com/alexandersavintsev/fastapi-service.git
+cd fastapi-service
 
 # 2. Виртуальное окружение (Python 3.12) и зависимости
 python3.12 -m venv venv
