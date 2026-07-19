@@ -59,6 +59,8 @@ flowchart LR
     H --> T1 & T2 & T3
 ```
 
+### Мини-презентация проекта: https://cloud.mail.ru/public/DBtP/zBMejCUAB
+
 ---
 
 ## 🔌 Эндпоинты
